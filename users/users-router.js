@@ -5,14 +5,12 @@ const Users = require('./users/users-model.js');
 const restricted = require('./auth/restricted-middleware.js');
 
 server.get('/', (req, res) => {
-    res.send("It's alive!");
+    res.send("It's working!");
 });
 
 server.post('/api/register', (req, res) => {
     let { username, password } = req.body;
-
-    const hash = bcrypt.hashSync(password, 8); // it's 2 ^ 8, not 8 rounds
-
+    const hash = bcrypt.hashSync(password, 14); // it's 2 ^ 14, not 14 rounds
     Users.add({ username, password: hash })
         .then(saved => {
             res.status(201).json(saved);
@@ -49,13 +47,8 @@ server.get('/api/users', restricted, (req, res) => {
 
 server.get('/hash', (req, res) => {
     const name = req.query.name;
-
-    // hash the name
     const hash = bcrypt.hashSync(name, 8); // use bcryptjs to hash the name
     res.send(`the hash for ${name} is ${hash}`);
 });
-
-const port = process.env.PORT || 5000;
-server.listen(port, () => console.log(`\n** Running on port ${port} **\n`));
 
 module.exports = router;
