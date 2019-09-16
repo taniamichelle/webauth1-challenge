@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+main {
+  width: 85vw;
+  min-height: 80vh;
+  max-width: 1024px;
+  margin: 35px auto;
+  background: rgb(214, 181, 181);
+  padding: 15px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.container {
+  background-color: rgb(118, 207, 195);
+}
+
+.active {
+  color: rgb(18, 18, 19);
+}
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.page-view {
+  min-height: 40vh;
+}
+
+.grid-view div.card.ui {
+  margin: 1.25rem;
+}
+/*
+.main-img {
+  display: block;
+  border-radius: 100%;
+  margin: 0 auto;
+} */
+
+header h1 {
+  text-align: center;
+  color: rgb(161, 235, 231);
+  background-color: rgb(14, 82, 114);
+  width: 100%;
+  height: 85px;
+  padding-top: 1.8rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tab-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.character-list .grid-view {
+  background-color: tan;
+}
+
+.character-card {
+  border: 2px solid black !important;
+  background-color:  rgb(92, 101, 180) !important;
+  text-align: center !important; 
+  width: 85% !important;
+  height: 200px !important;
+}
+
+.location-card {
+  border: 2px solid black !important;
+  background-color:  rgb(245, 220, 187) !important;
+  text-align: center !important; 
+  width: 45% !important;
+  height: 300px !important;
+  font-size: 1rem !important;
+}
+
+.episode-card {
+  border: 2px solid black !important;
+  background-color:  rgb(245, 220, 187) !important;
+  text-align: center !important; 
+  width: 85% !important;
+}
