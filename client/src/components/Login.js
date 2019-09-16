@@ -11,13 +11,13 @@ const Login = ({ history }) => {
     const handleSubmit = event => {
         event.preventDefault();
         // make a post request to retrieve a token from the api
-        axios.post('http://localhost:5000/api/login', creds)
+        axios.post('http://localhost:5000/api/users/login', creds)
             .then(res => {
                 console.log(res);
                 // save token into localStorage to persist user's login session between refreshes. can now access value of login token from anywhere
                 localStorage.setItem('token', res.data.payload);
                 // when you have handled the token, navigate to the BubblePage route
-                history.push('/colors');
+                history.push('/users');
             })
             .catch(err => console.log(err.response));
     };
@@ -25,7 +25,7 @@ const Login = ({ history }) => {
 
     return (
         <>
-            <h1>Welcome!</h1>
+            <h1>Welcome to the Bubble App!</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type='text'

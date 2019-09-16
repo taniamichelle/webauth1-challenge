@@ -1,14 +1,21 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 
-const Users = require('./users/users-model.js');
-const restricted = require('./auth/restricted-middleware.js');
+const Users = require('./users-model');
+const restricted = require('../auth/restricted-middleware');
 
-server.get('/', (req, res) => {
-    res.send("It's working!");
+router.get('/', (req, res) => {
+    Users.find()
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: "Error retrieving users." });
+        });
 });
 
-server.post('/api/register', (req, res) => {
+router.post('/register', (req, res) => {
     let { username, password } = req.body;
     const hash = bcrypt.hashSync(password, 14); // it's 2 ^ 14, not 14 rounds
     Users.add({ username, password: hash })
@@ -20,7 +27,7 @@ server.post('/api/register', (req, res) => {
         });
 });
 
-server.post('/api/login', (req, res) => {
+router.post('/login', (req, res) => {
     let { username, password } = req.body;
 
     Users.findBy({ username })
@@ -37,7 +44,7 @@ server.post('/api/login', (req, res) => {
         });
 });
 
-server.get('/api/users', restricted, (req, res) => {
+router.get('/', restricted, (req, res) => {
     Users.find()
         .then(users => {
             res.json(users);
@@ -45,7 +52,7 @@ server.get('/api/users', restricted, (req, res) => {
         .catch(err => res.send(err));
 });
 
-server.get('/hash', (req, res) => {
+router.get('/hash', (req, res) => {
     const name = req.query.name;
     const hash = bcrypt.hashSync(name, 8); // use bcryptjs to hash the name
     res.send(`the hash for ${name} is ${hash}`);

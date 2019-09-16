@@ -24,6 +24,6 @@ function fetch() {
             password: '',
         },
     };
-    // axios.get(url, reqOptions).the().catch()
-    // axios.post(url, data, reqOptions).the().catch()
+    // axios.get(url, reqOptions).then().catch()
+    // axios.post(url, data, reqOptions).then().catch()
 }

@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import './App.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Login from "./components/Login";
-import Admin from './components/Admin';
-import { PrivateRoute } from './components/PrivateRoute';
-import "./styles.scss";
+import Login from './components/Login';
 
 function App() {
-    return (
-        <Router>
-            <div className="App">
-                <Route exact path="/" component={Login} />
-                <PrivateRoute path='/protected' component={Admin} />
-            </div>
-        </Router>
-    );
+  return (
+    <div className="App">
+      <header className="App-header">
+
+      </header>
+    </div>
+  );
 }
 
 export default App;
