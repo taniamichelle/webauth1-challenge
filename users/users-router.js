@@ -1,19 +1,8 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 const Users = require('./users-model');
 const restricted = require('../auth/restricted-middleware');
-
-router.get('/', (req, res) => {
-    Users.find()
-        .then(users => {
-            res.status(200).json(users);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ error: "Error retrieving users." });
-        });
-});
 
 // router.post('/register', (req, res) => {
 //     let { username, password } = req.body;
@@ -52,10 +41,10 @@ router.get('/', restricted, (req, res) => {
         .catch(err => res.send(err));
 });
 
-router.get('/hash', (req, res) => {
-    const name = req.query.name;
-    const hash = bcrypt.hashSync(name, 8); // use bcryptjs to hash the name
-    res.send(`the hash for ${name} is ${hash}`);
-});
+// router.get('/hash', (req, res) => {
+//     const name = req.query.name;
+//     const hash = bcrypt.hashSync(name, 8); // use bcryptjs to hash the name
+//     res.send(`the hash for ${name} is ${hash}`);
+// });
 
 module.exports = router;

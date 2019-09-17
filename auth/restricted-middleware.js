@@ -1,5 +1,6 @@
-const bcrypt = require('bcryptjs');
-const Users = require('../users/users-model.js');
+// imports before adding 'cookies code'
+// const bcrypt = require('bcryptjs');
+// const Users = require('../users/users-model.js');
 
 module.exports = (req, res, next) => {
     if (req.session && req.session.user) {
@@ -26,13 +27,13 @@ module.exports = (req, res, next) => {
 //         });
 // };
 
-function fetch() {
-    const reqOptions = {
-        headers: {
-            username: '',
-            password: '',
-        },
-    };
-    // axios.get(url, reqOptions).then().catch()
-    // axios.post(url, data, reqOptions).then().catch()
-}
+// function fetch() {
+//     const reqOptions = {
+//         headers: {
+//             username: '',
+//             password: '',
+//         },
+//     };
+//     // axios.get(url, reqOptions).then().catch()
+//     // axios.post(url, data, reqOptions).then().catch()
+// }
