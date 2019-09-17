@@ -11,7 +11,7 @@ const usersRouter = require('./users/users-router');
 const db = require('./database/dbConfig');
 const Users = require('./users/users-model');
 const restricted = require('./auth/restricted-middleware');
-dbConnection = require('./database/dbConfig');
+const dbConnection = require('./database/dbConfig');
 const server = express();
 
 const sessionConfig = {
@@ -38,7 +38,7 @@ server.use(express.json());
 server.use(cors());
 server.use(session(sessionConfig));
 
-server.use('api/auth', authRouter);
+server.use('/api/auth', authRouter);
 server.use('/api/users', usersRouter);
 
 server.get('/', (req, res) => {

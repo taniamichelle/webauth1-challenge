@@ -4,6 +4,17 @@ const router = require('express').Router();
 const Users = require('./users-model');
 const restricted = require('../auth/restricted-middleware');
 
+router.get('/', restricted, (req, res) => {
+    Users.find()
+        .then(users => {
+            res.json(users);
+        })
+        .catch(err => {
+            console.log(err);
+            // res.send(err);
+        });
+});
+
 // router.post('/register', (req, res) => {
 //     let { username, password } = req.body;
 //     const hash = bcrypt.hashSync(password, 14); // it's 2 ^ 14, not 14 rounds
@@ -33,13 +44,7 @@ const restricted = require('../auth/restricted-middleware');
 //         });
 // });
 
-router.get('/', restricted, (req, res) => {
-    Users.find()
-        .then(users => {
-            res.json(users);
-        })
-        .catch(err => res.send(err));
-});
+
 
 // router.get('/hash', (req, res) => {
 //     const name = req.query.name;
